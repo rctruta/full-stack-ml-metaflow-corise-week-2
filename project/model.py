@@ -1,7 +1,3 @@
-# TODO: modify this custom model to your liking. Check out this tutorial for more on this class: https://outerbounds.com/docs/nlp-tutorial-L2/
-# TODO: train the model on traindf.
-# TODO: score the model on valdf with _the same_ 2D metric space you used in previous cell.
-# TODO: test your model works by importing the model module in notebook cells, and trying to fit traindf and score predictions on the valdf data!
 
 import tensorflow as tf
 from tensorflow.keras import layers, optimizers, regularizers
