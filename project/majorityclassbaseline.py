@@ -18,4 +18,3 @@ class MajorityClassBaseline(BaseEstimator, ClassifierMixin):
         accuracy = accuracy_score(y, predictions)
         roc_auc = roc_auc_score(y, predictions)
         return accuracy, roc_auc
-
