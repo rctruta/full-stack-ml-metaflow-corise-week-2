@@ -43,7 +43,7 @@ class BaselineChallenge(FlowSpec):
         # load dataset packaged with the flow.
         # this technique is convenient when working with small datasets that need to move to remove tasks.
         # TODO: load the data.
-        df = pd.read_csv(io.StringIO(self.data), index_col=0)
+        df = pd.read_csv(io.StringIO(self.data))
         # Look up a few lines to the IncludeFile('data', default='Womens Clothing E-Commerce Reviews.csv').
         # You can find documentation on IncludeFile here: https://docs.metaflow.org/scaling/data#data-in-local-files
 
@@ -77,9 +77,9 @@ class BaselineChallenge(FlowSpec):
         from majorityclassbaseline import MajorityClassBaseline
         baseline_model = MajorityClassBaseline()
 
-        baseline_model.fit(traindf['review'], traindf['label'])  # Fit the model
+        baseline_model.fit(self.traindf['review'], self.traindf['label'])  # Fit the model
         # TODO: return the accuracy_score of these predictions
-        acc, rocauc = baseline_model.score(valdf['review'], valdf['label'])
+        acc, rocauc = baseline_model.score(self.valdf['review'], self.valdf['label'])
 
         self.result = ModelResult("Baseline", params, pathspec, acc, rocauc)
         self.next(self.aggregate)
@@ -99,11 +99,11 @@ class BaselineChallenge(FlowSpec):
         for params in self.hyperparam_set:
             # TODO: instantiate your custom model here!
             model = NbowModel(vocab_sz=params['vocab_sz'])
-            model.fit(X=self.df["review"], y=self.df["label"])
+            model.fit(self.traindf["review"], self.traindf["label"])
             # TODO: evaluate your custom model in an equivalent way to accuracy_score.
-            acc = model.eval_acc(valdf['review'].values, valdf['label'])
+            acc = model.eval_acc(self.valdf['review'].values, self.valdf['label'])
             # TODO: evaluate your custom model in an equivalent way to roc_auc_score.
-            rocauc = model.eval_rocauc(valdf['review'].values, valdf['label'])
+            rocauc = model.eval_rocauc(self.valdf['review'].values, self.valdf['label'])
 
             self.results.append(
                 ModelResult(
