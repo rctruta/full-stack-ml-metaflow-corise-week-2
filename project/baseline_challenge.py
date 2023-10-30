@@ -92,7 +92,7 @@ class BaselineChallenge(FlowSpec):
         # NOTE: If you followed the link above to find a custom model implementation,
         # you will have noticed your model's vocab_sz hyperparameter.
         # Too big of vocab_sz causes an error. Can you explain why?
-        self.hyperparam_set = [{"vocab_sz": 100}, {"vocab_sz": 300}, {"vocab_sz": 500}]
+        self.hyperparam_set = [{"vocab_sz": 100}, {"vocab_sz": 300}, {"vocab_sz": 500}, {"vocab_sz": 737}]
         pathspec = f"{current.flow_name}/{current.run_id}/{current.step_name}/{current.task_id}"
 
         self.results = []
