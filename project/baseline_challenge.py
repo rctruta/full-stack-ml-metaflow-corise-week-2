@@ -43,7 +43,7 @@ class BaselineChallenge(FlowSpec):
         # load dataset packaged with the flow.
         # this technique is convenient when working with small datasets that need to move to remove tasks.
         # TODO: load the data.
-        df = pd.read_csv(io.StringIO(self.data))
+        df = pd.read_csv(io.StringIO(self.data), index_col=0)
         # Look up a few lines to the IncludeFile('data', default='Womens Clothing E-Commerce Reviews.csv').
         # You can find documentation on IncludeFile here: https://docs.metaflow.org/scaling/data#data-in-local-files
 
